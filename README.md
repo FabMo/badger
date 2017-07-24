@@ -1,6 +1,6 @@
-# SmoothSketch
+# Badger
 
 ## Overview
-SmoothSketch is a simple sketch application for the ShopBot HandiBot.
+Badger is the SmoothSketch app with the added feature of tracing images to create badges for events on the ShopBot Handibot.
 
-[gofabmo.org/fabmo-smoothsketch-app](http://gofabmo.org/fabmo-smoothsketch-app/)
+
