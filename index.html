@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<title>Smooth Sketch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+<link rel="stylesheet" href="css/style.css">
+
+<script src="js/libs/jquery-1.11.2.min.js"></script>
+<script src="js/libs/fabmo.js"></script>
+<script>var fabmo = new FabMoDashboard();</script>
+<script src="js/libs/simplify.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/default_sketch.js"></script>
+<script src="js/make.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/smooth.js"></script>
+<script src="js/image.js"></script>
+<script src="js/image_toolpath.js"></script>
+
+
+</head>
+
+<body onload="clear();">
+
+<canvas id="myCanvas"></canvas>
+
+<input type="image" id="play" src="css/play_icon.png" onclick="make()"/>
+<button id="submitJob" onclick="make()"><b>Submit<br>Job!</b></button>
+
+<!--
+<div class='submitContainer'>
+    <input id="input_submit" type="button" value="cut" onclick="make()"/>
+</div>
+-->
+
+<img class="clear-icon" src="css/trash.png">
+<img class="menu-icon" src="css/menu.png">
+<div class="do"></div>
+<div class="loader"></div>
+<div class="icon_select">
+	<div class="close"><span>X</span></div>
+	<div class="icon" id="1f918"></div>
+	<div class="icon" id="1f699"></div>
+	<div class="icon" id="1f698"></div>
+	<div class="icon" id="1f697"></div>
+	<div class="icon" id="1f696"></div>
+	<div class="icon" id="1f695"></div>
+	<div class="icon" id="1f694"></div>
+	<div class="icon" id="1f693"></div>
+	<div class="icon" id="1f692"></div>
+	<div class="icon" id="1f691"></div>
+	<div class="icon" id="1f690"></div>
+	<div class="icon" id="1f689"></div>
+	<div class="icon" id="1f688"></div>
+	<div class="icon" id="1f687"></div>
+	<div class="icon" id="1f686"></div>
+	<div class="icon" id="1f685"></div>
+	<div class="icon" id="1f684"></div>
+	<div class="icon" id="1f683"></div>
+	<div class="icon" id="1f682"></div>
+	<div class="icon" id="1f681"></div>
+	<div class="icon" id="1f680"></div>
+	<div class="icon" id="1f649"></div>
+	<div class="icon" id="1f648"></div>
+	<div class="icon" id="1f647"></div>
+	<div class="icon" id="1f646"></div>
+	<div class="icon" id="1f645"></div>	
+	<div class="icon" id="1f644"></div>
+	<div class="icon" id="1f643"></div>
+	<div class="icon" id="1f642"></div>
+	<div class="icon" id="1f641"></div>
+	<div class="icon" id="1f640"></div>
+	<div class="icon" id="1f639"></div>
+	<div class="icon" id="1f638"></div>
+	<div class="icon" id="1f637"></div>
+	<div class="icon" id="1f636"></div>
+	<div class="icon" id="1f635"></div>
+	<div class="icon" id="1f634"></div>
+	<div class="icon" id="1f633"></div>
+	<div class="icon" id="1f632"></div>
+	<div class="icon" id="1f631"></div>
+	<div class="icon" id="1f630"></div>
+	<div class="icon" id="1f629"></div>
+	<div class="icon" id="1f628"></div>
+	<div class="icon" id="1f627"></div>
+	<div class="icon" id="1f626"></div>
+	<div class="icon" id="1f625"></div>
+	<div class="icon" id="1f624"></div>
+	<div class="icon" id="1f623"></div>
+	<div class="icon" id="1f622"></div>
+	<div class="icon" id="1f621"></div>
+	<div class="icon" id="1f620"></div>
+	<div class="icon" id="1f619"></div>
+	<div class="icon" id="1f618"></div>
+	<div class="icon" id="1f617"></div>
+	<div class="icon" id="1f616"></div>
+	<div class="icon" id="1f615"></div>
+	<div class="icon" id="1f614"></div>
+	<div class="icon" id="1f613"></div>
+	<div class="icon" id="1f612"></div>
+	<div class="icon" id="1f611"></div>
+	<div class="icon" id="1f610"></div>
+	<div class="icon" id="1f609"></div>
+	<div class="icon" id="1f608"></div>
+	<div class="icon" id="1f607"></div>
+	<div class="icon" id="1f606"></div>
+	<div class="icon" id="1f605"></div>
+	<div class="icon" id="1f604"></div>
+	<div class="icon" id="1f603"></div>
+	<div class="icon" id="1f602"></div>
+	<div class="icon" id="1f601"></div>
+	<div class="icon" id="1f600"></div>
+	<div class="icon" id="1f596"></div>
+	<div class="icon" id="1f590"></div>
+	<div class="icon" id="1f587"></div>
+	<div class="icon" id="1f579"></div>
+	<div class="icon" id="1f578"></div>
+	<div class="icon" id="1f577"></div>
+	<div class="icon" id="1f576"></div>
+	<div class="icon" id="1f575"></div>
+	<div class="icon" id="1f574"></div>
+	<div class="icon" id="1f910"></div>
+	<div class="icon" id="1f911"></div>
+	<div class="icon" id="1f912"></div>
+	<div class="icon" id="1f913"></div>
+	<div class="icon" id="1f914"></div>
+	<div class="icon" id="1f915"></div>
+	<div class="icon" id="1f916"></div>
+	<div class="icon" id="1f917"></div>
+	<div class="icon" id="1f919"></div>
+	<div class="icon" id="1f920"></div>
+	<div class="icon" id="1f921"></div>
+	<div class="icon" id="1f922"></div>
+	<div class="icon" id="1f923"></div>
+	<div class="icon" id="1f924"></div>
+	<div class="icon" id="1f925"></div>
+	<div class="icon" id="1f926"></div>
+	<div class="icon" id="1f927"></div>
+	<div class="icon" id="1f930"></div>
+	<div class="icon" id="1f933"></div>
+	<div class="icon" id="1f934"></div>
+	<div class="icon" id="1f935"></div>
+	<div class="icon" id="1f936"></div>
+	<div class="icon" id="1f937"></div>
+	<div class="icon" id="1f938"></div>
+	<div class="icon" id="1f939"></div>
+	<div class="icon" id="1f940"></div>
+	<div class="icon" id="1f942"></div>
+	<div class="icon" id="1f943"></div>
+	<div class="icon" id="1f944"></div>
+	<div class="icon" id="1f945"></div>
+	<div class="icon" id="1f947"></div>
+	<div class="icon" id="1f948"></div>
+	<div class="icon" id="1f949"></div>
+	<div class="icon" id="1f950"></div>
+	<div class="icon" id="1f951"></div>
+	<div class="icon" id="1f952"></div>
+	<div class="icon" id="1f953"></div>
+	<div class="icon" id="1f954"></div>
+	<div class="icon" id="1f955"></div>
+	<div class="icon" id="1f956"></div>
+	<div class="icon" id="1f957"></div>
+	<div class="icon" id="1f958"></div>
+	<div class="icon" id="1f959"></div>
+	<div class="icon" id="1f980"></div>
+	<div class="icon" id="1f981"></div>
+	<div class="icon" id="1f982"></div>
+	<div class="icon" id="1f983"></div>
+	<div class="icon" id="1f984"></div>
+	<div class="icon" id="1f985"></div>
+	<div class="icon" id="1f986"></div>
+	<div class="icon" id="1f987"></div>
+	<div class="icon" id="1f988"></div>
+	<div class="icon" id="1f989"></div>
+	<div class="icon" id="1f990"></div>
+	<div class="icon" id="1f991"></div>
+	<div class="icon" id="26bd"></div>
+	<div class="icon" id="26be"></div>
+	<div class="icon" id="26c4"></div>
+	<div class="icon" id="26f3"></div>
+	<div class="icon" id="26f7"></div>
+	<div class="icon" id="262e"></div>
+	<div class="icon" id="262f"></div>
+	<div class="icon" id="263a"></div>
+	<div class="icon" id="269b"></div>
+	<div class="icon" id="269c"></div>
+	<div class="icon" id="270c"></div>
+	<div class="icon" id="2622"></div>
+	<div class="icon" id="2623"></div>
+	<div class="icon" id="2638"></div>
+	<div class="icon" id="2639"></div>
+	<div class="icon" id="2697"></div>
+	<div class="icon" id="2699"></div>
+	<div class="icon" id="2708"></div>
+	<div class="icon" id="1f382"></div>
+	<div class="icon" id="1f415"></div>
+	<div class="icon" id="1f416"></div>
+	<div class="icon" id="1f406"></div>
+	<div class="icon" id="1f405"></div>
+	<div class="icon" id="1f421"></div>
+	<div class="icon" id="1f418"></div>
+</div>
+<div class="inputContainer" id="input">
+    <label for="gloss">Smoothness</label><br>
+    <input type="number" name="gloss" class="gloss" id="gloss" placeholder="Smooth" value="2.5" min="0" max = "10" step="1"/><br>
+    <label for="width">Canvas Width (X)</label><br>
+    <input type="number" name="width" class="width" placeholder="Canvas Width (X)" value="2.5"/><br>
+    <label for="width">Canvas Height (Y)</label><br>
+    <input type="number" name="height"class="height" placeholder="Canvas Height (Y)" value="2.5"/><br>
+    <label for="width">Cut Depth</label><br>
+    <input type="number" name="depth"class="depth"  placeholder="Cut Depth" value="-0.025"/><p>
+    RUN IMMEDIATE<br>
+	 <input type="checkbox" id="run" autocomplete="off"/>
+</div>
+<script>
+
+
+$(document).ready(function(){
+	fabmo.getAppConfig(function(err, myConfig) {		
+		if(myConfig.canvasHeight){
+			$('.width').val(myConfig.canvasWidth);
+			$('.height').val(myConfig.canvasHeight);
+			$('.depth').val(myConfig.canvasDepth)
+			$('.gloss').val(myConfig.canvasGloss)
+			var SizeX = $('.width').val();
+			var SizeY = $('.height').val();
+			var CutDepth = $('.depth').val();
+			var Smooth = $('.gloss').val();
+		}
+	});
+});
+
+$('.icon').each(function(){
+	var id = $(this).attr('id');
+	if ($(this).attr('id') === "makeymakeyhowitworks"){
+		$(this).css('background-image', 'url("css/svgs/'+id+'.jpg")');
+	} else {
+		$(this).css('background-image', 'url("css/svgs/'+id+'.svg")');
+	}
+	
+});
+
+
+var jobNum;
+var myConfig = new Object();
+
+var SizeX = $('.width').val()
+var SizeY = $('.height').val()
+var CutDepth = $('.depth').val()
+var Smooth = $('.gloss').val();
+
+$('.width').change(function(){
+	SizeX = $('.width').val();
+	fabmo.getAppConfig(function(err, myConfig) {		
+		myConfig.canvasWidth = SizeX
+		myConfig.canvasHeight = SizeY
+		myConfig.canvasDepth = CutDepth;
+		myConfig.canvasGloss = Smooth;
+		fabmo.setAppConfig(myConfig)
+	});
+})
+
+$('.height').change(function(){
+	SizeY = $('.height').val();
+	fabmo.getAppConfig(function(err, myConfig) {		
+		myConfig.canvasWidth = SizeX
+		myConfig.canvasHeight = SizeY
+		myConfig.canvasDepth = CutDepth;
+		myConfig.canvasGloss = Smooth;
+		fabmo.setAppConfig(myConfig)
+	});
+})
+
+$('.depth').change(function(){
+	CutDepth = $('.depth').val();
+	fabmo.getAppConfig(function(err, myConfig) {		
+		myConfig.canvasWidth = SizeX
+		myConfig.canvasHeight = SizeY
+		myConfig.canvasDepth = CutDepth;
+		myConfig.canvasGloss = Smooth;
+		fabmo.setAppConfig(myConfig)
+	});
+})
+
+$('.gloss').change(function(){
+	Smooth = $('.gloss').val();
+	fabmo.getAppConfig(function(err, myConfig) {		
+		myConfig.canvasWidth = SizeX
+		myConfig.canvasHeight = SizeY
+		myConfig.canvasDepth = CutDepth;
+		myConfig.canvasGloss = Smooth;
+		fabmo.setAppConfig(myConfig)
+	});
+})
+
+$('.inputContainer').data('open', 'false')
+
+
+
+$('.do').click(function(){
+	$('.icon_select').show();
+});
+
+$('.close').click(function(){
+	$('.icon_select').hide();
+});
+$('.icon').click(function(){
+	 clear();
+	$('.icon_select').hide();
+	$('.loader').show();
+	var id = $(this).attr('id');
+
+	var source = new Image();
+	source.src = 'css/svgs/'+id+'.svg';
+	
+	var w = ctx.canvas.width, h = ctx.canvas.height;
+		  // Render our SVG image to the canvas once it loads.
+		  source.onload = function() {
+		   	// var srcx = 0;
+		  	// var srcy = 0;
+			// var srcw = src.naturalWidth;
+			// var srch = src.naturalHeight;
+			// var desx = srcx;
+			// var desy = srcy;
+			// var desw = srcw;
+			// var desh = srch;
+
+
+			devicePixelRatio = window.devicePixelRatio || 1,
+        	backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
+                            ctx.mozBackingStorePixelRatio ||
+                            ctx.msBackingStorePixelRatio ||
+                            ctx.oBackingStorePixelRatio ||
+                            ctx.backingStorePixelRatio || 1,
+
+        	ratio = devicePixelRatio / backingStoreRatio;
+
+ 
+
+				// now scale the context to counter
+				// the fact that we've manually scaled
+				// our canvas element
+				// ctx.scale(ratio, ratio);
+			var s;
+			if (w < h){
+				s = w - 10;
+			} else {
+				s = h - 10;
+			}
+
+
+
+			ctx.drawImage(source, 0, 20, s, s);
+			var imgData = ctx.getImageData(0, 0, w, h);
+			var svgHull = []
+			var d = imgData.data;
+			var img = new Img(ctx);
+			var ps = new PointStore();
+			for (x = 0; x < img.width; x++){
+				for(y = 0; y < img.height; y++){
+					v= img.getPixel(x,y);
+					if (v < 100 ){
+						var neighbor = img.neighborhood(x,y);
+						if (neighbor > 0) {
+							ps.add(x,y,1);
+						}
+					}
+				}
+			}
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+
+		var paths = extractGlyphs(ps);
+		var perimeters = [];
+		paths.forEach(function(x){
+			perimeters.push(glyphToPath(x));
+		});
+		xyPerim =[];
+		perimeters.forEach(function(x){
+			var newArr = [];
+			for(i=0; i<x.length; i++){
+				if (x[i] == undefined){
+					x.splice(i, 1);
+				} else {
+					newArr.push({x:x[i][0], y:x[i][1]});
+				}
+			}
+			xyPerim.push(newArr);
+		});
+		xyPerim.forEach(function(x){
+			points.push(x);
+			makeSmooth();
+		})
+		$('.loader').hide();
+		// makeSmooth();
+	
+
+	// for (var i=0,len=d.length;i<len;i+=4){
+	// 	var x=i/4%w,y=Math.floor((i/4-x)/w);
+	// 	var r=d[i],g=d[i+1],b=d[i+2],a=d[i+3];
+	// 	if (r == 0 && g == 0 && b == 0 && a > 0 ){
+	// 		svgHull.push({x:x, y:y});
+	// 	}
+	// }
+
+	// var svgPerim = convexHull(svgHull);
+
+	// smooth.push(svgPerim);
+
+	// makeSmooth();
+	
+				
+  }
+  
+
+});
+
+
+$("#myCanvas").on('touchstart mousedown', function(e) {
+
+	//e.preventDefault()
+	if($('.inputContainer').data('open')=='true'){
+		document.getElementById("input").style.display="none";
+		$('.inputContainer').css('right', '-1000px')
+		$('.inputContainer').data('open', 'false')
+		draw()
+	}
+	if(animation == true){
+		turnOffAnimation()
+	}
+	if($('.inputContainer').data('open')=='false'){
+		points.push([])
+		ctx.strokeStyle = "#4169e1"
+		if(e.type=="mousedown"){
+			points[points.length-1].push({x:e.clientX,y:e.clientY})
+		}
+		else if(e.type=="touchstart"){
+			points[points.length-1].push({x:e.originalEvent.touches[0].clientX,y:e.originalEvent.touches[0].clientY})
+		}
+		sketch=true
+	}
+	
+})
+$( "#run" ).change(function() {
+	if(document.getElementById("run").checked==true){
+		document.getElementById("submitJob").style.display="none"
+		document.getElementById("play").style.display="block"
+	}
+	else{
+		document.getElementById("submitJob").style.display="block"
+		document.getElementById("play").style.display="none"
+	}
+})
+$("#myCanvas").on('touchmove mousemove', function(e) {
+
+	e.preventDefault()
+	if((sketch==true) && (typeof e.clientX != 'undefined') && (e.type=="mousemove")) {
+				
+		if(points[points.length-1].length==1){
+			ctx.beginPath()
+			ctx.moveTo(e.clientX,e.clientY)
+		}		
+		ctx.lineTo(e.clientX,e.clientY)
+	   points[points.length-1].push({x:e.clientX,y:e.clientY})
+	   ctx.stroke()
+	}
+	else if((sketch==true) && (e.type=="touchmove")) {
+
+		if(points[points.length-1].length==1){
+			ctx.beginPath()
+			ctx.moveTo(e.originalEvent.touches[0].clientX,e.originalEvent.touches[0].clientY)
+		}		
+		ctx.lineTo(e.originalEvent.touches[0].clientX,e.originalEvent.touches[0].clientY)
+	   points[points.length-1].push({x:e.originalEvent.touches[0].clientX,y:e.originalEvent.touches[0].clientY})
+	   ctx.stroke()
+	}
+})
+$("#myCanvas").on('touchend mouseup', function(e) {
+
+	//e.preventDefault()
+	if(sketch==true) {
+		sketch=false
+		makeSmooth()
+	}
+})
+$('.menu-icon').click(function(){
+    if ($('.inputContainer').data('open')== 'true'){
+		  document.getElementById("input").style.display="none";
+        $('.inputContainer').css('right', '-1000px')
+        $('.inputContainer').data('open', 'false')
+		  draw()
+    } else {
+		  document.getElementById("input").style.display="block";
+        $('.inputContainer').css('right', '0px')
+        $('.inputContainer').data('open', 'true')
+		  draw()
+    }
+})
+$('.clear-icon').click(function(){
+    clear()
+})
+$(window).resize(function(){
+	clear()
+})
+fabmo.getAppConfig(function(err, myConfig) {
+
+	if(myConfig.job==undefined){
+		jobNum = 1
+		myConfig.job = 1
+		fabmo.setAppConfig(myConfig)
+	}
+	else{
+		jobNum = myConfig.job
+	}
+});
+</script>
+
+
+</body>
+</html>
+

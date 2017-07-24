@@ -1,0 +1,16 @@
+{
+	"name":"Badger",
+	"repository":"",
+	"license":"MIT",
+	"main":"./index.html",
+	"icon":"icon.png",
+	"icon_color":"#ffff",
+	"version":"0.0.1",
+	"author":"Jonathan Ward & Brendan Collins",
+	"website":"http://github.com/FabMo/",
+	"description":"SmoothSketch + SVGs for badges",
+	"devDependencies": {
+    	"grunt": "^0.4.5",
+    	"grunt-zip": "^0.17.1"
+  	}
+}
