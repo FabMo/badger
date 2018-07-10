@@ -22,8 +22,10 @@
 </head>
 
 <body onload="clear();">
-
+<canvas id="backGroundCanvas"></canvas>
 <canvas id="myCanvas"></canvas>
+
+
 
 <input type="image" id="play" src="css/play_icon.png" onclick="make()"/>
 <button id="submitJob" onclick="make()"><b>Submit<br>Job!</b></button>
@@ -229,6 +231,7 @@ $(document).ready(function(){
 			var Smooth = $('.gloss').val();
 		}
 	});
+
 });
 
 $('.icon').each(function(){
@@ -313,8 +316,11 @@ $('.icon').click(function(){
 
 	var source = new Image();
 	source.src = 'css/svgs/'+id+'.svg';
-	
-	var w = ctx.canvas.width, h = ctx.canvas.height;
+	var background = document.getElementById("backGroundCanvas").getContext("2d")
+
+	background.canvas.height = $(window).height()
+	background.canvas.width = $(window).width()
+	var w = background.canvas.width, h = background.canvas.height;
 		  // Render our SVG image to the canvas once it loads.
 		  source.onload = function() {
 		   	// var srcx = 0;
@@ -328,11 +334,11 @@ $('.icon').click(function(){
 
 
 			devicePixelRatio = window.devicePixelRatio || 1,
-        	backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
-                            ctx.mozBackingStorePixelRatio ||
-                            ctx.msBackingStorePixelRatio ||
-                            ctx.oBackingStorePixelRatio ||
-                            ctx.backingStorePixelRatio || 1,
+        	backingStoreRatio = background.webkitBackingStorePixelRatio ||
+			background.mozBackingStorePixelRatio ||
+			background.msBackingStorePixelRatio ||
+			background.oBackingStorePixelRatio ||
+			background.backingStorePixelRatio || 1,
 
         	ratio = devicePixelRatio / backingStoreRatio;
 
@@ -351,47 +357,47 @@ $('.icon').click(function(){
 
 
 
-			ctx.drawImage(source, 0, 20, s, s);
-			var imgData = ctx.getImageData(0, 0, w, h);
-			var svgHull = []
-			var d = imgData.data;
-			var img = new Img(ctx);
-			var ps = new PointStore();
-			for (x = 0; x < img.width; x++){
-				for(y = 0; y < img.height; y++){
-					v= img.getPixel(x,y);
-					if (v < 100 ){
-						var neighbor = img.neighborhood(x,y);
-						if (neighbor > 0) {
-							ps.add(x,y,1);
-						}
-					}
-				}
-			}
-		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+			background.drawImage(source, 0, 20, s, s);
+		// 	var imgData = ctx.getImageData(0, 0, w, h);
+		// 	var svgHull = []
+		// 	var d = imgData.data;
+		// 	var img = new Img(ctx);
+		// 	var ps = new PointStore();
+		// 	for (x = 0; x < img.width; x++){
+		// 		for(y = 0; y < img.height; y++){
+		// 			v= img.getPixel(x,y);
+		// 			if (v < 100 ){
+		// 				var neighbor = img.neighborhood(x,y);
+		// 				if (neighbor > 0) {
+		// 					ps.add(x,y,1);
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
 
-		var paths = extractGlyphs(ps);
-		var perimeters = [];
-		paths.forEach(function(x){
-			perimeters.push(glyphToPath(x));
-		});
-		xyPerim =[];
-		perimeters.forEach(function(x){
-			var newArr = [];
-			for(i=0; i<x.length; i++){
-				if (x[i] == undefined){
-					x.splice(i, 1);
-				} else {
-					newArr.push({x:x[i][0], y:x[i][1]});
-				}
-			}
-			xyPerim.push(newArr);
-		});
-		xyPerim.forEach(function(x){
-			points.push(x);
-			makeSmooth();
-		})
+		// var paths = extractGlyphs(ps);
+		// var perimeters = [];
+		// paths.forEach(function(x){
+		// 	perimeters.push(glyphToPath(x));
+		// });
+		// xyPerim =[];
+		// perimeters.forEach(function(x){
+		// 	var newArr = [];
+		// 	for(i=0; i<x.length; i++){
+		// 		if (x[i] == undefined){
+		// 			x.splice(i, 1);
+		// 		} else {
+		// 			newArr.push({x:x[i][0], y:x[i][1]});
+		// 		}
+		// 	}
+		// 	xyPerim.push(newArr);
+		// });
+		// xyPerim.forEach(function(x){
+		// 	points.push(x);
+		// 	makeSmooth();
+		// })
 		$('.loader').hide();
 		// makeSmooth();
 	

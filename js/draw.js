@@ -231,12 +231,12 @@ function clear(){
 	i=0
 	j=0
 
-	if(animation==true){
-		ctx.translate(ctx.canvas.width/2,ctx.canvas.height/2)
-		ctx.moveTo(default_sketch[0][0].x,default_sketch[0][0].y)
-	animate()
-}
-ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+// 	if(animation==true){
+// 		ctx.translate(ctx.canvas.width/2,ctx.canvas.height/2)
+// 		ctx.moveTo(default_sketch[0][0].x,default_sketch[0][0].y)
+// 	animate()
+// }
+// ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
 function animate () {

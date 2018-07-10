@@ -7,6 +7,9 @@ canvas{
    background: #eee;
 }
 
+#backGroundCanvas{
+    background: #eee;
+}
 .close span{
     position: fixed;
     margin: 10px;
